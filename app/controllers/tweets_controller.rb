@@ -14,6 +14,16 @@ class TweetsController < ApplicationController
     Rails.logger.info params.inspect
   end
 
+  def test
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ""
+      config.consumer_secret     = ""
+      config.access_token        = ""
+      config.access_token_secret = ""
+    end
+    # @tweets = Twitter.user_timeline[0..4]
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
