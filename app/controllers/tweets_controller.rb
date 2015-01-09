@@ -16,11 +16,24 @@ class TweetsController < ApplicationController
 
   def test
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ""
-      config.consumer_secret     = ""
-      config.access_token        = ""
-      config.access_token_secret = ""
+      config.consumer_key        = "JZGYoTPOZTVcvtbKYnvmY1otI"
+      config.consumer_secret     = "DayfYC8hpEVxYavbejdSiOKD6YsbkDRsdAxAUMDbVG09aAubw8"
+      config.access_token        = "607346453-xbJEV4cwCDvJgrGyYFHQpLc47JQ5ogiJWCkTPp08"
+      config.access_token_secret = "jc8gCXsgy9O5MOiq8YsEqk0pAg1rQUWfGiZqyknlJHvUy"
     end
+    # do this for each CI Center
+    @tweets = client.user_timeline("Children_Intl")
+    @tweets.each do |element|
+      tweetid = element.id
+      @tweet = client.status(tweetid)      
+      # puts @tweet.hashtags[0]
+    end
+    # iterate through all tweets, display each tweet's words, who wrote it, and date
+    #for (int i = 0; i < tweets.length; i++)
+    #{
+      # client.status(tweets[i].id)
+    #}
+
     # @tweets = Twitter.user_timeline[0..4]
   end
 
