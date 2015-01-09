@@ -5,7 +5,7 @@ class TweetsRealsController < ApplicationController
   # GET /tweets_reals.json
   def index
     # @tweets_reals = TweetsReal.all
-    @tweets_all = TweetsReal.order(twt_created_at: :desc)
+    @tweets_all = TweetsReal.order(twt_created_at: :desc) # call all tweets in descending created_at order
   end
 
   # GET /tweets_reals/1

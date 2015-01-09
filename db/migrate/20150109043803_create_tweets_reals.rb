@@ -1,3 +1,5 @@
+# Setup Tweets table in db
+
 class CreateTweetsReals < ActiveRecord::Migration
   def change
     create_table :tweets_reals do |t|

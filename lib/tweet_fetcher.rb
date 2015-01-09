@@ -1,6 +1,10 @@
 module TweetFetcher
   extend self
 
+  '''
+  Fetches tweets of all CI usernames listed, saves each tweet as a TweetsReal object in the local db.
+  '''
+
   def fetch_tweets_and_persist!
     %w(
       Children_Intl
@@ -22,6 +26,9 @@ module TweetFetcher
 
   private
 
+  '''
+  Client connects to Twitter API with application-only credentials
+  '''
   def client
     @client ||= Twitter::REST::Client.new do |config|
       config.consumer_key        = "JZGYoTPOZTVcvtbKYnvmY1otI"
