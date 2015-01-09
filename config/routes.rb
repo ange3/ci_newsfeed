@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tweets_reals, only: [:index, :show]
+
   resources :tweets, only: [:index, :show] do 
     collection do
       get 'test'

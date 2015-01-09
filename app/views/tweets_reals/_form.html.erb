@@ -1,0 +1,17 @@
+<%= form_for(@tweets_real) do |f| %>
+  <% if @tweets_real.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tweets_real.errors.count, "error") %> prohibited this tweets_real from being saved:</h2>
+
+      <ul>
+      <% @tweets_real.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
