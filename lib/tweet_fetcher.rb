@@ -18,6 +18,7 @@ module TweetFetcher
           username: tweet.user.screen_name,
           twt_created_at: tweet.created_at,
           twt_text: tweet.text,
+          twt_center: username,
         )
       end
     end
@@ -29,6 +30,7 @@ module TweetFetcher
           username: tweet.user.screen_name,
           twt_created_at: tweet.created_at,
           twt_text: tweet.text,
+          twt_center: username,
         )
       end
     end
@@ -47,7 +49,6 @@ module TweetFetcher
     end
     puts 'new num records', TweetsReal.all.length
   end
-
 
   private
 
