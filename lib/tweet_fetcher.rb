@@ -12,6 +12,13 @@ module TweetFetcher
       client.user_timeline(username).map do |element|
         client.status(element.id)
       end.each do |tweet|
+        # tweetImageUrlArray = []
+        # if tweet.media.present? 
+        #   tweet.media.each do |element|
+        #     photo = client.photo(element.id)
+        #     tweetImageUrlArray << photo.expanded_url
+        #   end
+        # end
         TweetsReal.find_or_initialize_by(
           twt_id: tweet.id,
         ).update!(
@@ -19,6 +26,7 @@ module TweetFetcher
           twt_created_at: tweet.created_at,
           twt_text: tweet.text,
           twt_center: username,
+          # twt_media_url: tweetImageUrlArray,
         )
       end
     end
