@@ -2,6 +2,15 @@ h1 Children International - Around the World
 .content 
 	- @tweets_all.each_with_index do |tweet|
 		.story.story-left
-			img src="http://placekitten.com/g/63/63"
+			- if tweet.twt_center === "Children_Intl"
+				a[href="http://children.org" target="tab"]
+					img src="../ci_intl.png" height="63px" width="63px"
+			- if tweet.twt_center === "CIBayArea"
+				a[href="http://children.org/bay-area-chapter" target="tab"]
+					img src="../ci_bayarea.jpg" height="63px" width="63px"
+			- if tweet.twt_center === "ChildrenRD"
+				a[href="http://http://childreninternational.do/" target="tab"]
+					img src="../ci_dominicanrepublic.jpeg" height="63px" width="63px"
 			= tweet.twt_text
+			= tweet.twt_center
 			
