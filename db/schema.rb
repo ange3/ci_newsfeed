@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109053136) do
+ActiveRecord::Schema.define(version: 20150110064620) do
 
   create_table "tweets_reals", force: :cascade do |t|
     t.string   "twt_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150109053136) do
     t.text     "twt_text"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "twt_center"
   end
 
   add_index "tweets_reals", ["twt_id"], name: "index_tweets_reals_on_twt_id", unique: true
