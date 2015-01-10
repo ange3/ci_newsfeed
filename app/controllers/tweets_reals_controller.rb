@@ -13,6 +13,10 @@ class TweetsRealsController < ApplicationController
   def show
   end
 
+  def display
+    @tweets_all = TweetsReal.order(twt_created_at: :desc)
+  end
+
   # DELETE /tweets_reals/1
   # DELETE /tweets_reals/1.json
   def destroy

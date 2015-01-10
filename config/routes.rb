@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :tweets_reals, only: [:index, :show]
+  resources :tweets_reals, only: [:index, :show] do 
+    collection do
+      get 'display'
+    end
+  end
 
   resources :tweets, only: [:index, :show] do 
     collection do
