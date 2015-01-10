@@ -1,11 +1,7 @@
 h1 Children International - Around the World
 .content 
 	- @tweets_all.each_with_index do |tweet|
-		if (index %2 == 0)
-			.story.story-left
-				img src="http://placekitten.com/g/63/63"
-				= tweet.twt_text
-		else
-			.story.story-right
-				= tweet.twt_text
-				img src="http://placekitten.com/g/63/63"
+		.story.story-left
+			img src="http://placekitten.com/g/63/63"
+			= tweet.twt_text
+			
