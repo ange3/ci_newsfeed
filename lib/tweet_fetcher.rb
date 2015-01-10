@@ -2,14 +2,13 @@ module TweetFetcher
   extend self
 
   '''
-  Fetches tweets of all CI usernames listed, saves each tweet as a TweetsReal object in the local db.
+  Fetches all tweets on timelines of CI usernames and all tweets that mention the given usernames.
+  Saves each tweet as a TweetsReal object in the local db.
+  *  Usernames: main CI, CI Bay Area, CI Dominican Republic.
   '''
-
   def fetch_tweets_and_persist!
-    %w(
-      Children_Intl
-      CIBayArea
-    ).each do |username|
+    ci_usernames = ["Children_Intl", "CIBayArea", "ChildrenRD"]
+    ci_usernames.each do |username|
       client.user_timeline(username).map do |element|
         client.status(element.id)
       end.each do |tweet|
@@ -22,7 +21,33 @@ module TweetFetcher
         )
       end
     end
+    ci_usernames.each do |username|
+      client.search("@#{username} -rt").collect do |tweet|
+        TweetsReal.find_or_initialize_by(
+          twt_id: tweet.id,
+        ).update!(
+          username: tweet.user.screen_name,
+          twt_created_at: tweet.created_at,
+          twt_text: tweet.text,
+        )
+      end
+    end
+    puts 'Num Tweets:', TweetsReal.all.length
   end
+
+  '''
+  Removes tweets in the database that have "RT" in the text
+  '''
+  def remove_retweets
+    puts 'orig num records', TweetsReal.all.length
+    TweetsReal.all.each do |tweet|
+      if tweet.twt_text.include? "RT"
+        TweetsReal.delete(tweet.id)
+      end
+    end
+    puts 'new num records', TweetsReal.all.length
+  end
+
 
   private
 
