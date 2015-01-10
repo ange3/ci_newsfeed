@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tweets Reals</h1>
+
+<h3>You have <%= @tweets_all.length %> tweets</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>tweet id</th>
+      <th>username</th>
+      <th>created at</th>
+      <th>text</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweets_all.each do |tweet| %>
+      <tr>
+        <td><%= tweet.twt_id %></td>
+        <td><%= tweet.username %></td>
+        <td><%= tweet.twt_created_at %></td>
+        <td><%= tweet.twt_text %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

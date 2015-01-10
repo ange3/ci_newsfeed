@@ -1,0 +1,65 @@
+$vertical-rhythm: 21px
+$header-color: #72768c
+$story-left-c: #8de384
+$story-right-c: #68d35c
+$story-margin: 10px
+
+.container
+	max-width: 720px
+	margin-left: auto
+	margin-right: auto
+	padding-top: $vertical-rhythm*2
+	padding-bottom: 0px
+	// color: #8de384
+	// color: #68d35c
+
+h1
+	
+	color: $header-color
+	font-weight: 100
+	letter-spacing: 1px
+	font-size: 36px
+
+body
+	font-size: 14px
+	line-height: $vertical-rhythm
+	font-family: "Helvetica Neue", Helvetica, sans-serif
+
+.content 
+    
+
+.story
+	display: -webkit-box
+	display: -moz-box
+	display: -ms-flexbox
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: center
+	-ms-flex-align: center
+	align-items: center
+	border-radius: 5px
+	margin-bottom: $vertical-rhythm
+	padding: $vertical-rhythm/2
+
+	img 
+		flex: 0 0 auto
+		-moz-flex: 0 0 auto
+		-webkit-flex: 0 0 auto
+
+	p 
+		flex: 1 1 auto
+		-moz-flex: 1 1 auto
+		-webkit-flex: 1 1 auto
+
+.story-left 
+	background-color: $story-left-c
+
+	img 
+		margin-right: $story-margin
+
+.story-right 
+	background-color: $story-right-c
+
+	img 
+		margin-left: $story-margin
+
